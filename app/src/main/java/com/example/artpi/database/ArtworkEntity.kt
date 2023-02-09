@@ -3,7 +3,6 @@ package com.example.artpi.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-class ArtworkEntity {
     @Entity(tableName = "ArtworkEntity")
     data class ArtworkEntity(
         @PrimaryKey val id: Int,
@@ -12,4 +11,3 @@ class ArtworkEntity {
         val type: String,
         val url: String
     )
-}

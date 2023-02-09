@@ -34,8 +34,8 @@ class ArtworkViewModel : ViewModel() {
     fun getAllArtworks() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO) {
-                val characters = ArtworkDatabase.database.characterDao().getAllCharacters()
-                changeToFavoritesArtworks(Artworks)
+                val myArtworks = ArtworkDatabase.database.artworkDao().getAllArtworks()
+                changeToFavoritesArtworks(myArtworks)
             }
         }
     }
