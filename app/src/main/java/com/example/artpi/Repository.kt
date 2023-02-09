@@ -1,7 +1,5 @@
 package com.example.artpi
 
-import com.example.artpi.model.Data
-
 
 class Repository {
     private val apiInterface = ApiInterface.create()

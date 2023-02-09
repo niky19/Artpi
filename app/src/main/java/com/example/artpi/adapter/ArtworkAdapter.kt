@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.artpi.OnClickListener
 import com.example.artpi.R
 import com.example.artpi.databinding.ItemArtworkBinding
-import com.bumptech.glide.Glide
+import com.example.artpi.model.Data
 
-class ArtworkAdapter(private val artworks: MutableList<Artwork>, private val listener: OnClickListener):
+class ArtworkAdapter(
+    private val artworks: MutableList<Data>,
+    private val listener: OnClickListener
+) :
     RecyclerView.Adapter<ArtworkAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -23,13 +28,14 @@ class ArtworkAdapter(private val artworks: MutableList<Artwork>, private val lis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val artwork = artworks[position]
-        with(holder){
+        with(holder) {
             setListener(artwork)
             binding.textViewTitle.text = artwork.title
             binding.textViewOrder.text = artwork.id.toString()
             Glide.with(context)
-                .load(artwork.url)
+                .load(artwork.image_id)
                 .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .circleCrop()
                 .into(binding.imgPhoto)
         }
@@ -39,10 +45,9 @@ class ArtworkAdapter(private val artworks: MutableList<Artwork>, private val lis
         return artworks.size
     }
 
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemArtworkBinding.bind(view)
-
-        fun setListener(artwork: Artwork){
+        fun setListener(artwork: Data) {
             binding.root.setOnClickListener {
                 listener.onClick(artwork)
             }

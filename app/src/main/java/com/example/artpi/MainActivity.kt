@@ -1,14 +1,16 @@
 package com.example.artpi
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import com.example.artpi.viewModel.ArtworkViewModel
+import androidx.appcompat.app.AppCompatActivity
+import com.example.artpi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-       // val artworkViewModel = ArtworkViewModel by viewModels()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
