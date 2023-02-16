@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/img_Photo"
-        android:layout_width="340dp"
+        android:layout_width="390dp"
         android:layout_height="160dp"
         android:contentDescription="@string/description_photo"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +25,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_Photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/img_Photo"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintStart_toEnOf="@id/img_Photo"
+        app:layout_constraintStart_toEndOf="@id/img_Photo"
         tools:text="1" />
 
     <TextView
