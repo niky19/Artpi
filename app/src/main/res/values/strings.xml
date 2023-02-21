@@ -8,4 +8,8 @@
     <string name="new_user_name">New user name</string>
     <string name="new_user_image_url">New user image URL</string>
     <string name="add">Add</string>
+    <string name="dashboard">dashboard</string>
+    <string name="search">search</string>
+    <string name="favourites">favourites</string>
+    <string name="logo_name">ARTPI</string>
 </resources>

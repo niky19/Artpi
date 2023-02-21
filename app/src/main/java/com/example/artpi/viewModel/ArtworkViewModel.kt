@@ -3,9 +3,7 @@ package com.example.artpi.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.artpi.Repository
-import com.example.artpi.database.ArtworkApplication.Companion.database
-import com.example.artpi.database.ArtworkDatabase
-import com.example.artpi.database.CharacterApplication.Companion.database
+import com.example.artpi.database.ArtworkApplication
 import com.example.artpi.model.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +15,7 @@ class ArtworkViewModel : ViewModel() {
     var repo = Repository()
 
     init {
-        fetchData("artwork")
+        fetchData("artworks")
     }
 
     fun fetchData(url: String) {
@@ -31,16 +29,16 @@ class ArtworkViewModel : ViewModel() {
         }
     }
 
-    fun getAllArtworks() {
+    fun showAllArtworks() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO) {
-                val myArtworks = ArtworkDatabase.database.artworkDao().getAllArtworks()
-                changeToFavoritesArtworks(myArtworks)
+                val myArtworks = ArtworkApplication.database.artworkDao().showAllArtworks()
+                addFav(myArtworks)
             }
         }
     }
 
-    private fun changeToFavoritesArtworks(artworks: Any) {
+    private fun addFav(artworks: Any) {
         TODO("Not yet implemented")
     }
 

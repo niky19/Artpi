@@ -7,16 +7,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.artpi.OnClickListener
+import com.example.artpi.MyOnClickListener
 import com.example.artpi.R
 import com.example.artpi.databinding.ItemArtworkBinding
 import com.example.artpi.model.Data
 
 class ArtworkAdapter(
     private val artworks: MutableList<Data>,
-    private val listener: OnClickListener
+    private val listener: MyOnClickListener
 ) :
     RecyclerView.Adapter<ArtworkAdapter.ViewHolder>() {
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemArtworkBinding.bind(view)
+        fun setListener(artwork: Data) {
+            binding.root.setOnClickListener {
+                listener.onClick(artwork)
+            }
+        }
+    }
 
     private lateinit var context: Context
 
@@ -45,12 +54,5 @@ class ArtworkAdapter(
         return artworks.size
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemArtworkBinding.bind(view)
-        fun setListener(artwork: Data) {
-            binding.root.setOnClickListener {
-                listener.onClick(artwork)
-            }
-        }
-    }
+
 }
