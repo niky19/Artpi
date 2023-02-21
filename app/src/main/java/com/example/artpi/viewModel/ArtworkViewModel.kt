@@ -15,7 +15,7 @@ class ArtworkViewModel : ViewModel() {
     var repo = Repository()
 
     init {
-        fetchData("artwork")
+        fetchData("artworks")
     }
 
     fun fetchData(url: String) {

@@ -11,4 +11,5 @@
     <string name="dashboard">dashboard</string>
     <string name="search">search</string>
     <string name="favourites">favourites</string>
+    <string name="logo_name">ARTPI</string>
 </resources>
